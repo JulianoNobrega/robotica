@@ -65,8 +65,8 @@ def run_robot(robot):
                 right_speed = max_speed/8
 
         # Envio de dados para o ATUADOR    
-        left_motor.setVelocity(max_speed)
-        right_motor.setVelocity(max_speed)
+        left_motor.setVelocity(left_speed)
+        right_motor.setVelocity(right_speed)
 
 if __name__ == "__main__":
     # Criação da Instância do robô
