@@ -1,0 +1,137 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  basicTimeStep 16
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  fieldOfView 1
+  orientation 1 0 0 -1.5731853071795863
+  position 0.028168060808299478 1.9751415778798809 -0.017434221917957744
+}
+TexturedBackground {
+  texture "noon_sunny_empty"
+}
+TexturedBackgroundLight {
+}
+DEF FLOOR Solid {
+  children [
+    DEF F_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.545098 0.803922 1
+        baseColorMap ImageTexture {
+          url [
+            "textures/grid.png"
+          ]
+        }
+        roughness 1
+        metalness 0
+        textureTransform TextureTransform {
+          scale 6 6
+        }
+      }
+      geometry Box {
+        size 1 0.001 1
+      }
+    }
+  ]
+  name "Floor"
+  boundingObject USE F_SHAPE
+}
+WoodenBox {
+  translation -0.22 0.05 0.15418
+  rotation 0 -1 0 0
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.3323 0.05 -0.2306
+  rotation 0 -1 0 0
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.2296 0.05 -0.2316
+  rotation 0 -1 0 0
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  translation 0.125 0 0.125
+  controller "planejador"
+}
+DEF BALL Solid {
+  translation 0 0.05 -0.17
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/steel_floor.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+DEF WALL_1 Solid {
+  translation 0.5 0.05 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "textures/fabric_with_motif.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+        textureTransform TextureTransform {
+          scale 10 1
+        }
+      }
+      geometry Box {
+        size 0.02 0.1 1.02
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_2 Solid {
+  translation -0.5 0.05 0
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(2)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_3 Solid {
+  translation 0 0.05 -0.5
+  rotation 0 1 0 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(3)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_4 Solid {
+  translation 0 0.05 0.5
+  rotation 0 1 0 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(4)"
+  boundingObject USE WALL_SHAPE
+}
